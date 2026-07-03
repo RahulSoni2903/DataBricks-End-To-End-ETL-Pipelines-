@@ -1,0 +1,16 @@
+resources:
+  jobs:
+    Master_Job_Pipeline_Ingestion_ETL_Flows:
+      name: Master Job Pipeline (Ingestion + ETL Flows)
+      tasks:
+        - task_key: Data_From_AWS
+          pipeline_task:
+            pipeline_id: c19cef8d-110b-408c-811f-e5e68157df48
+        - task_key: ETL_Pipeline
+          depends_on:
+            - task_key: Data_From_AWS
+          pipeline_task:
+            pipeline_id: 13533bf8-4e7a-4758-82fc-33aee611cac4
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

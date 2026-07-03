@@ -1,0 +1,76 @@
+resources:
+  pipelines:
+    pipeline_ingestion_pipeline:
+      name: "Ingestion Pipeline "
+      ingestion_definition:
+        connection_name: amazon
+        objects:
+          - table:
+              source_catalog: Practice
+              source_schema: dbo
+              source_table: Accounts
+              destination_catalog: altrahul
+              destination_schema: rschema
+              table_configuration:
+                scd_type: SCD_TYPE_2
+                primary_keys:
+                  - AccountID
+                query_based_connector_config:
+                  cursor_columns:
+                    - OpenDate
+          - table:
+              source_catalog: Practice
+              source_schema: dbo
+              source_table: Branches
+              destination_catalog: altrahul
+              destination_schema: rschema
+              table_configuration:
+                scd_type: SCD_TYPE_2
+                primary_keys:
+                  - BranchID
+                query_based_connector_config:
+                  cursor_columns:
+                    - BranchID
+          - table:
+              source_catalog: Practice
+              source_schema: dbo
+              source_table: Customers
+              destination_catalog: altrahul
+              destination_schema: rschema
+              table_configuration:
+                scd_type: SCD_TYPE_2
+                primary_keys:
+                  - CustomerID
+                query_based_connector_config:
+                  cursor_columns:
+                    - CreatedDate
+          - table:
+              source_catalog: Practice
+              source_schema: dbo
+              source_table: Loans
+              destination_catalog: altrahul
+              destination_schema: rschema
+              table_configuration:
+                scd_type: SCD_TYPE_2
+                primary_keys:
+                  - LoanID
+                query_based_connector_config:
+                  cursor_columns:
+                    - LoanID
+          - table:
+              source_catalog: Practice
+              source_schema: dbo
+              source_table: Transactions
+              destination_catalog: altrahul
+              destination_schema: rschema
+              table_configuration:
+                scd_type: SCD_TYPE_2
+                primary_keys:
+                  - TransactionID
+                query_based_connector_config:
+                  cursor_columns:
+                    - TransactionID
+        source_type: SQLSERVER
+      schema: source
+      channel: PREVIEW
+      catalog: altrahul

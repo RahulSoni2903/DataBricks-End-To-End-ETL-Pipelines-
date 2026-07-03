@@ -1,0 +1,18 @@
+resources:
+  pipelines:
+    pipeline_end_to_end_pipeline_source_on_primise:
+      name: End to End Pipeline (Source = On Primise)
+      libraries:
+        - glob:
+            include: ../../src/End to
+              End Pipeline (Source = On Primise)/**
+      schema: destination
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog_name}
+      serverless: true
+      root_path: ../../src/End to End
+        Pipeline (Source = On Primise)
+        
